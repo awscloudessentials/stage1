@@ -100,7 +100,7 @@ ssh -i "$SSH_KEY" -o StrictHostKeyChecking=no "$SSH_USER@$SERVER_IP" bash <<EOF
   sudo systemctl enable docker nginx
   sudo systemctl start docker nginx
   echo "✅ Remote environment ready."
-
+  EOF
 
 # ------------- Step 6: Cleanup (if requested) -------------
 
@@ -137,7 +137,7 @@ ssh -i "$SSH_KEY" -o StrictHostKeyChecking=no "$SSH_USER@$SERVER_IP" bash <<EOF
     sudo docker build -t hng .
     sudo docker run -d -p ${APP_PORT}:${APP_PORT} --name hng hng
   fi
-
+  EOF  
 
 # ------------- Step 8: Configure Nginx Reverse Proxy -------------
 
@@ -168,5 +168,5 @@ ssh -i "$SSH_KEY" -o StrictHostKeyChecking=no "$SSH_USER@$SERVER_IP" bash <<EOF
   sudo docker ps
   curl -I http://localhost || echo "App may not be responding yet."
 
-
+  EOF
 log "🎉 Deployment complete! Access your app at: http://$SERVER_IP"
